@@ -1,5 +1,5 @@
 import React from 'react'
-import classes from './Order.module.css';
+import styles from './Order.module.css';
 
 const order = (props) => {
     const ingredients = []
@@ -21,7 +21,7 @@ const order = (props) => {
     });
 
     return(
-        <div className={classes.Order}>
+        <div className={styles.Order}>
             <p>Ingredients: {ingredientOutput}</p>
             <p>Price: <strong>USD {props.price.toFixed(2)}</strong></p>
         </div>

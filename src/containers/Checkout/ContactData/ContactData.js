@@ -4,7 +4,7 @@ import Button from '../../../components/UI/Button/Button';
 import Spinner from '../../../components/UI/Spinner/Spinner';
 import axios from '../../../store/actions/axios-orders';
 import Input from '../../../components/UI/Input/Input';
-import classes from './ContactData.module.css';
+import styles from './ContactData.module.css';
 
 class ContactData extends Component {
     state = {
@@ -179,7 +179,7 @@ class ContactData extends Component {
             form = <Spinner />;
         }
         return (
-            <div className={classes.ContactData}>
+            <div className={styles.ContactData}>
                 <h4>Enter your Contact Data</h4>
                 {form}
             </div>

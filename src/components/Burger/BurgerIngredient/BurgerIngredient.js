@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import classes from './BurgerIngredient.module.css';
+import styles from './BurgerIngredient.module.css';
 
 class BurgerIngredient extends Component {
     render () {
@@ -8,27 +8,27 @@ class BurgerIngredient extends Component {
 
         switch(this.props.type){
             case ('bread-bottom'):
-                ingredient = <div className={classes.BreadBottom}></div>;
+                ingredient = <div className={styles.BreadBottom}></div>;
                 break;
             case ('bread-top'):
                 ingredient  = (
-                    <div className={classes.BreadTop}>
-                        <div className={classes.Seeds1}></div>
-                        <div className={classes.Seeds2}></div>
+                    <div className={styles.BreadTop}>
+                        <div className={styles.Seeds1}></div>
+                        <div className={styles.Seeds2}></div>
                     </div>
                 );
                 break;
             case ('meat'):
-                ingredient = <div className={classes.Meat}></div>;
+                ingredient = <div className={styles.Meat}></div>;
                 break;
             case ('cheese'):
-                ingredient = <div className={classes.Cheese}></div>;
+                ingredient = <div className={styles.Cheese}></div>;
                 break;
             case ('bacon'):
-                ingredient = <div className={classes.Bacon}></div>;
+                ingredient = <div className={styles.Bacon}></div>;
                 break;
             case ('salad'):
-                ingredient = <div className={classes.Salad}></div>;
+                ingredient = <div className={styles.Salad}></div>;
                 break;
             default:
                 ingredient = null;

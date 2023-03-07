@@ -4,7 +4,7 @@ import {
     useNavigate,
     useParams,
 } from "react-router-dom";
-import classes from './Burger.module.css';
+import styles from './Burger.module.css';
 import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
 const withRouter = (Component) => {
@@ -38,7 +38,7 @@ const burger = (props) => {
     }
     return (
         // withRouter(
-            <div className={classes.Burger}>
+            <div className={styles.Burger}>
                 <BurgerIngredient type="bread-top" />
                 {transformedIngredients}
                 <BurgerIngredient type="bread-bottom" />
