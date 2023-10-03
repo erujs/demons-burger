@@ -1,0 +1,13 @@
+.checkoutSummary{
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    margin: auto;
+};
+
+.btnContainer {
+    display: flex;
+}

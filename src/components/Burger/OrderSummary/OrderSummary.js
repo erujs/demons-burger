@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
+import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import Button from '../../UI/Button/Button';
 
-class OrderSummary extends Component {
-    componentWillUpdate() {
-        console.log('[OrderSummary] WillUpdate')
-    }
+const OrderSummary = ({
+    ingredients,
+    price,
+    purchaseCancelled,
+}) => {
+    const navigate = useNavigate();
 
-    render() {
-        const ingredientSummary = Object.keys(this.props.ingredients)
-            .map(igKey => {
-                return (
-                    <li key={igKey}>
-                        <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {this.props.ingredients[igKey]}
-                    </li>
-                );
-            });
-
+    const ingredientSummary = Object.keys(ingredients).map(igKey => {
         return (
-            <>
-                <h3>Your Order</h3>
-                <p>A delicious burger with the following ingredients:</p>
-                <ul>
-                    {ingredientSummary}
-                </ul>
-                <p><strong>Total Price: {this.props.price.toFixed(2)}</strong></p>
-                <p>Continue to Checkout?</p>
-                <Button btnType="Danger" clicked={this.props.purchaseCancelled}>CANCEL</Button>
-                <Button btnType="Success" clicked={this.props.purchaseContinued}>CONTINUE</Button>
-            </>
+            <li key={igKey}>
+                <span style={{ textTransform: 'capitalize' }}>{igKey}</span>: {ingredients[igKey]}
+            </li>
         );
-    }
+    });
+
+    return (
+        <>
+            <h3>Your Order</h3>
+            <p>A delicious burger with the following ingredients:</p>
+            <ul>
+                {ingredientSummary}
+            </ul>
+            <p><strong>Total Price: {price.toFixed(2)}</strong></p>
+            <p>Continue to Checkout?</p>
+            <Button btnType="Danger" clicked={purchaseCancelled}>CANCEL</Button>
+            <Button btnType="Success" clicked={() => navigate('/checkout')}>CONTINUE</Button>
+        </>
+    );
 }
 
 export default OrderSummary;

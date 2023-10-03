@@ -1,11 +1,10 @@
 .BuildControls{
     width: 100%;
-    background-color: maroon;
+    background-color: #faebd7;
     display: flex;
     flex-flow: column;
     align-items: center;
     box-shadow: 0 2px 1px #CCCCCC;
-    margin: auto;
     padding: 10px 0;
 }
 
@@ -36,10 +35,6 @@
 
 .OrderButton:not(:disabled) {
     animation: enable 0.3s linear;
-}
-
-.currentPrice {
-    color: white;
 }
 
 @keyframes enable {

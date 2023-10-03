@@ -1,50 +1,64 @@
 import React from 'react';
-import {
-    useLocation,
-    useNavigate,
-    useParams,
-} from "react-router-dom";
+import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import styles from './Burger.module.css';
-import BurgerIngredient from './BurgerIngredient/BurgerIngredient';
 
-const withRouter = (Component) => {
-    function ComponentWithRouterProp(props) {
-        let location = useLocation();
-        let navigate = useNavigate();
-        let params = useParams();
-        return (
-            <Component
-                {...props}
-                router={{ location, navigate, params }}
-            />
-        );
+const Burger = ({
+    ingredients,
+}) => {
+    const burgerIngredients = (type) => {
+        switch (type) {
+            case ('egg'):
+                return <div className={classNames(styles.text, styles.egg)}>egg</div>
+            case ('bacon'):
+                return <div className={classNames(styles.text, styles.bacon)}>bacon</div>;
+            case ('cheese'):
+                return <div className={classNames(styles.text, styles.cheese)}>cheese</div>;
+            case ('patty'):
+                return <div className={classNames(styles.text, styles.patty)}>patty</div>;
+            case ('salad'):
+                return <div className={classNames(styles.text, styles.salad)}>salad</div>;
+            default:
+                return null;
+        }
     }
 
-    return ComponentWithRouterProp;
-}
+    const renderIngredients = () => {
+        let transformedIngredients;
+        if (ingredients) {
+            transformedIngredients = Object.keys(ingredients)
+                .map(type => {
+                    return [...Array(ingredients[type])].map((_, i) => {
+                        return burgerIngredients(type);
+                    });
+                })
+                .reduce((arr, el) => {
+                    return arr.concat(el)
+                }, []);
+            if (transformedIngredients.length === 0) {
+                transformedIngredients = <div className={styles.text}>Please start adding ingredients!</div>
+            }
+        }
 
-const burger = (props) => {
-    let transformedIngredients = Object.keys(props.ingredients)
-        .map(igKey => {
-            return [...Array(props.ingredients[igKey])].map((_, i) => {
-                return <BurgerIngredient key={igKey + i} type={igKey} />;
-            });
-        })
-        .reduce((arr, el) => {
-            return arr.concat(el)
-        }, []);
-    if (transformedIngredients.length === 0) {
-        transformedIngredients = <p>Please start adding ingredients!</p>
+        return transformedIngredients;
     }
+
     return (
-        // withRouter(
-            <div className={styles.Burger}>
-                <BurgerIngredient type="bread-top" />
-                {transformedIngredients}
-                <BurgerIngredient type="bread-bottom" />
-            </div>
-        // )
+        <div className={styles.burger}>
+            <div className={classNames(styles.bun, styles.bunTop)}>bun</div>
+            {renderIngredients()}
+            <div className={classNames(styles.bun, styles.bunBottom)}>bun</div>
+        </div>
     );
 };
 
-export default burger;
+Burger.defaultProps = {
+    ingredients: null,
+}
+
+Burger.propTypes = {
+    ingredients: PropTypes.object,
+}
+
+
+export default Burger;

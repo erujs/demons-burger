@@ -1,5 +1,8 @@
 .ContactData {
     margin: 20px auto;
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
     width: 80%;
     text-align: center;
     box-shadow: 0 2px 3px #CCCCCC;
