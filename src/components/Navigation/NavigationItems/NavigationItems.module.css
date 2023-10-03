@@ -1,15 +1,46 @@
-.NavigationItems {
-    margin: 0;
-    padding: 0;
-    list-style: none;
+
+.container {
     display: flex;
+    gap: 1rem;
     flex-flow: column;
     align-items: center;
     height: 100%;
 }
 
-@media (min-width: 500px) {
-    .NavigationItems {
+.item {
+    display: block;
+    width: 100%;
+}
+
+.item a {
+    color: black;
+    text-decoration: none;
+    width: 100%;
+    box-sizing: border-box;
+    display: block;
+}
+
+.item a:hover,
+.item a.active {
+    color: orange;
+}
+
+@media (min-width: 768px) {
+    .container {
         flex-flow: row;
+    }
+
+    .item {
+        display: flex;
+        width: auto;
+        align-items: center
+    }
+    
+    .item a {
+        border-bottom: 4px solid transparent;
+    }
+    
+    .item a.active {
+        border-bottom: 4px solid orange;
     }
 }

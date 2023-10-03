@@ -1,28 +1,91 @@
-.Toolbar {
-    height: 56px;
+.toolbar {
+    height: 5rem;
     width: 100%;
-    /* position: fixed;
+    position: absolute;
     top: 0;
-    left: 0; */
-    background-color: maroon;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 20px;
+    padding: 1rem;
     box-sizing: border-box;
-    z-index: 90;
+    z-index: 3;
+    background-color: #faebd7;
 }
 
-.Toolbar nav {
-    height: 100%;
-}
-
-.Logo {
+.logo {
     height: 80%;
 }
 
-@media (max-width: 499px) {
-    .DesktopOnly {
-        display: none;
-    }
+.drawerToggle {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.drawerToggle div {
+    width: 90%;
+    height: 3px;
+    background-color: orange;
+}
+
+.closeDrawer {
+    width: 40px;
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: space-around;
+    align-items: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.closeDrawer div {
+    width: 90%;
+    height: 3px;
+    background-color: orange;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .closeDrawer .middle {
+    transform: rotate(45deg);
+  }
+  
+  .closeDrawer .bottom {
+    transform: rotate(-45deg);
+  }
+
+.drawer {
+    position: fixed;
+    width: 100%;
+    background-color: #faebd7;
+    padding: 1rem;
+    box-sizing: border-box;
+    transform: translateY(-100%);
+    transition: transform 0.3s ease-in-out;
+    z-index: 2;
+}
+
+.open {
+    transform: translateY(80%);
+}
+
+.displayNone {
+    display: none;
+}
+
+.backdrop {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    background-color: rgba(0, 0, 0, 0.5);
 }

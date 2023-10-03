@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import Backdrop from '../Backdrop/Backdrop';
 import styles from './Modal.module.css';
 
 class Modal extends Component {
@@ -7,14 +6,10 @@ class Modal extends Component {
         return nextProps.show !== this.props.show || nextProps.children !== this.props.children;
     }
 
-    componentWillUpdate () {
-        console.log('[Modal] WillUpdate')
-    }
-
     render () {
         return (
             <>
-                <Backdrop show={this.props.show} clicked={this.props.modalClosed}/>
+                {this.props.show && (<div className={styles.Backdrop} onClick={this.props.modalClosed} />)}
                 <div 
                     className={styles.Modal}
                     style={{
